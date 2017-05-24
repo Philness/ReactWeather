@@ -1,0 +1,7 @@
+GIT COMMANDS
+    git init = start using git and begin tracking
+    git status = show which files are being tracked and which ones aren't.
+    .gitignore = a file in the project root directory that lists what git should always ignore.
+    git add = add a file to the save list
+    git add . = to save all except what's in the gitignore.
+    git commit -m 'message' = saves your stuff.
