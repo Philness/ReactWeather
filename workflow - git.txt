@@ -4,8 +4,15 @@ GIT COMMANDS
     .gitignore = a file in the project root directory that lists what git should always ignore.
     git add = add a file to the save list, you have to use this for new files
     git add . = to save all except what's in the gitignore.
+    git push = uploads your junk to github.
     git commit -m 'message' = saves your stuff.
-    git commit -a -m = Adds any files on the save list, then asks for a message, but only works on modified files
+    git commit -a -m = Adds any files on the save list, then asks for a message, but only works on modified 
+    git remote -v = shows all remote places the repository is being uploaded
+
+HEROKU COMMANDS
+    heroku create = makes a heroku repository based on what you have uploaded.
+    git push heroku master = pushes the contents of your directory to heroku.
+    heroku open = actually opens the app in your default browser.
 
 DEPLOYING TO HEROKU
     1. In package.json, under scripts, place a start property equal to the command you use to start the server, node server.js
