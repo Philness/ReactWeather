@@ -16,7 +16,7 @@ var Weather = React.createClass({
     handleSearch: function(location){
         this.setState({isLoading: true});
         var that = this;  //"that" is going to refer to "this" in the Weather module context so we can call functions on it when we're in the quagmire.
-        debugger;
+//debugger;
         openWeatherMap.getTemp(location).then(function(temp){  //pulls the getTemp method from <openWeatherMap> module, passes in the location
             that.setState({  //if you used "this" in this context, it would refer to the openWeatherMap module
                 location: location,
