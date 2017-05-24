@@ -13,7 +13,10 @@ var React = require("react");
 // });
 
 var About = (props)=>(
-    <h3>About Component will go here...</h3>
+    <div>
+    <h3>About</h3>
+    <p>This app is dedicated to Stack Overflow and my Chingu cohort, without whom none of this would have been possible.</p>
+    </div>
 );
 
 
