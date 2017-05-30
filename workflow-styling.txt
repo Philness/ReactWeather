@@ -1,0 +1,25 @@
+THINGS TO INSTALL --save-dev
+    1. css-loader
+    2. style-loader
+    3. jquery
+    4. foundation-sites
+    5. script-loader
+
+THINGS TO MODIFY IN webpack.config
+    1. Change the entry point to an array with your app.jsx, jquery/dist/jquery.min.js, and foundation-sites/dist/foundation.min.js
+        a. app.jsx must go last
+        b. to invoke script-loader on the min.js files, add "script!" before each one.
+    2. Under entry, add externals object{}
+        a. inside, put jquery: "jQuery", so you can access the jquery module by using the name "jQuery".
+
+    3. Under externals, add a plugins array[]
+        a. Inside, place new webpack.providePlugin({})
+        b. Inside of this. tell webpack that $ stands for "jquery", and "jQuery" also stands for "jquery"
+
+    4. Load in webpack utilities so you can use the $ for jquery's abbreviation
+        1. use var webpack = require("webpack")
+
+THINGS TO MODIFY IN app.js
+    1. Load in the css with foundation, require("foundation-sites/dist/foundation.min.css")
+    2. Add a style! and  css! tag on the front to use the special css-loader thing.
+    3. Use your jquery to start foundation with $(document).foundation() method.
