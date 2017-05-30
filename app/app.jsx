@@ -25,7 +25,7 @@ ReactDOM.render(
     // What are you rendering?  Where are you rendering it?
     //Router takes one property, {hashHistory}.  Remember that it's in braces.
     //Route takes path and component, path tells you where to go to get it, component tells you what component to load in
-    //IndexRoute takes component also, and loads in children of the route.
+    //IndexRoute takes a component also, and loads in children of the route.
     //You have to go over to Main.jsx and add this.props.children into the render method to display the children.
     //IndexRoute seems to be a "render this unless I tell you to render something else" command.
 

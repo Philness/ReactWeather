@@ -23,3 +23,6 @@ THINGS TO MODIFY IN app.js
     1. Load in the css with foundation, require("foundation-sites/dist/foundation.min.css")
     2. Add a style! and  css! tag on the front to use the special css-loader thing.
     3. Use your jquery to start foundation with $(document).foundation() method.
+
+USING STYLE CLASSES
+    1. Make sure that you use className rather than class when specifying css classes, because class is reserved in jsx.
