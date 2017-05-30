@@ -17,6 +17,9 @@ var Weather = require('Weather');
 var About = require("About");
 var Examples = require("Examples");
 
+//loading foundation here
+require("style!css!foundation-sites/dist/foundation.min.css");
+$(document).foundation();
 
 ReactDOM.render(
     // What are you rendering?  Where are you rendering it?
