@@ -20,7 +20,10 @@ var {Link, IndexLink} = require("react-router");  //You can create links with Re
 var Nav = React.createClass({
     onSearch:function(e){
         e.preventDefault();
-        alert("This nav isn't ready yet, sorries.")
+        var location = this.refs.search.value;
+        var encodedLocation = encodeURIComponent(location);
+        if (location.length >0){this.refs.search.value = "";}
+        window.location.hash = "#/?location=" + encodedLocation;
     },
 
     render:function(){
@@ -37,7 +40,7 @@ var Nav = React.createClass({
             <div className ="top-bar-right">
                 <form onSubmit={this.onSearch}>
                     <ul className = "menu">
-                        <li><input type = "search" placeholder = "search weather"/></li>
+                        <li><input type = "search" placeholder = "search weather" ref = "search"/></li>
                         <li><input type = "submit" className = "button" value ="Do eeet!" /></li>
                     </ul>
                 </form>

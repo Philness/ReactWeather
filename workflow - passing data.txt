@@ -49,4 +49,24 @@ PART 3. In the child function that's going to display the new state, do the foll
         2. Make sure that the variable names you're going to use are consistent throughout all classes.
     B. Place the variables where you want them in the render function with {} around them.
 
-    
+
+
+PART 4. To pass pieces of the web address:
+    A. In <Weather.jsx>, to run the search ON something in the web address:
+        1. Make a compoenentDidMount function, to run every time the weather page loads.
+        2. Pull the location out of the web address by using var location = this.props.location.query.location
+        3. Run the handleSearch() function on that location, if the location exists and isn't empty.
+        4. Null the address out by setting window.location.hash = "#/", which replaces the location string with a #.
+    B. In <Nav.jsx>, to put items INTO the web address:
+        1. place a ref attribute on the search bar
+        2. Target the ref by making a variable = this.refs.(ref name).value
+        3. Encode the location by using encodeURIComponent(target)
+        4. Null the search term out by using this.refs.(ref name).value = ""
+        5. Modify the web address by setting window.location.hash = "#/?(ENCODED TARGET)=" + "value"
+
+
+PART 5: To listen for changes after the component is already loaded:
+    A. Create a function called componentWillReceiveProps(), let it take in newProps from <Nav.jsx>
+    B. Let the location now be newProps.location.query.location
+    C. Run handleSearch() on the location, if one exists and isn't empty
+    D. Null out the address again with window.location.hash = "#/"

@@ -17,7 +17,9 @@ var Weather = React.createClass({
     handleSearch: function(location){
         this.setState({
             isLoading: true,
-            errorMessage: undefined
+            errorMessage: undefined,
+            location: undefined,
+            temp: undefined
     });
         var that = this;  //"that" is going to refer to "this" in the Weather module context so we can call functions on it when we're in the quagmire.
 //debugger;
@@ -39,7 +41,20 @@ var Weather = React.createClass({
             isLoading: false
         }
     },
-
+    componentDidMount:function(){
+        var location = this.props.location.query.location;
+        if(location && location.length>0){
+            this.handleSearch(location);
+            window.location.hash = "#/"
+        }
+    },
+    componentWillReceiveProps:function(newProps){
+         var location = newProps.location.query.location;
+        if(location && location.length>0){
+            this.handleSearch(location);
+            window.location.hash = "#/"       
+    }
+},
     render: function(){
         var {location, temp, isLoading, errorMessage} = this.state;  //This looks at the state and creates variables based on that; those variables are passed to the module <Message>
         function renderMessage(){
