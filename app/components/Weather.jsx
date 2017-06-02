@@ -1,7 +1,8 @@
 var React = require("react");
 var Form = require("Form");  //to pull data from <Form>, through ".handleSearch"
 var Message = require("Message");  //to pass the data into <Message>
-var openWeatherMap = require("openWeatherMap")  //".handleSearch" uses this to yank data from the weather api
+var openWeatherMap = require("openWeatherMap");  //".handleSearch" uses this to yank data from the weather api
+var ErrorModal = require("ErrorModal");
 
 
 //The weather component will load by default when you fire up the "/" route
@@ -14,7 +15,10 @@ var openWeatherMap = require("openWeatherMap")  //".handleSearch" uses this to y
 var Weather = React.createClass({
 
     handleSearch: function(location){
-        this.setState({isLoading: true});
+        this.setState({
+            isLoading: true,
+            errorMessage: undefined
+    });
         var that = this;  //"that" is going to refer to "this" in the Weather module context so we can call functions on it when we're in the quagmire.
 //debugger;
         openWeatherMap.getTemp(location).then(function(temp){  //pulls the getTemp method from <openWeatherMap> module, passes in the location
@@ -24,8 +28,9 @@ var Weather = React.createClass({
                 isLoading: false
             });
         }, function(errorMessage){  //Alert the error message if you're unable to set state for some reason.
-            alert(errorMessage);
-            that.setState({isLoading: false});
+            that.setState({
+                errorMessage: errorMessage.message,
+                isLoading: false});
         });
     },
 
@@ -36,7 +41,7 @@ var Weather = React.createClass({
     },
 
     render: function(){
-        var {location, temp, isLoading} = this.state;  //This looks at the state and creates variables based on that; those variables are passed to the module <Message>
+        var {location, temp, isLoading, errorMessage} = this.state;  //This looks at the state and creates variables based on that; those variables are passed to the module <Message>
         function renderMessage(){
             if (isLoading){
                 return <h3>Now loading...</h3>;
@@ -44,12 +49,16 @@ var Weather = React.createClass({
                 return <Message location = {location} temp = {temp}/>;
             }
         }
+        function renderError(){
+            if (typeof errorMessage==='string'){return <ErrorModal message = {errorMessage} />}
+        }
         return(
             <div>
-            <h3>THE WEATHER!</h3>
+            <h1 className = "text-center page-title">THE WEATHER!</h1>
             <Form onSearch={this.handleSearch}/>
             {/*<Message location = {location} temp = {temp}/>*/}
             {renderMessage()}
+            {renderError()}
             </div>
         );
 

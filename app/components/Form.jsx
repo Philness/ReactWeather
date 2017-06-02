@@ -15,8 +15,8 @@ var Form = React.createClass({
     render: function(){
         return(
             <form onSubmit={this.onFormSubmit}>
-                <input ref="location" type = "text" placeholder = "Enter City Name"></input>
-                <button>SUBMIIIT!!</button>
+                <input ref="location" type = "search" placeholder = "Enter City Name"></input>
+                <button className = "button expanded hollow">SUBMIIIT!!</button>
             </form>
         );
 

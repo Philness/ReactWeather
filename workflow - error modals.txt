@@ -1,0 +1,23 @@
+MAKING AN ERROR MODAL
+
+
+PART 1 - CREATING THE COMPONENT, START BY MAKING <ErrorModal.jsx> in components.
+    A. Render function() needs a div with your stuff inside of it, and a button.
+        1. The outer div must have the data-reveal attribute = "".  Also, let it have an id.
+        2. The button must have the data-close attribute= "".
+    B. componentDidMount function():  This is run when the component is called from the <Weather.jsx>.
+        1. Create a modal = new Foundation.Reveal($(your modal ID))
+        2. Run modal.open()
+    C. Other stuff
+        1. Make sure to require react
+        2. Also, put in module exports so you can use it.
+        3. Add an alias to webpack.config.js
+
+PART 2 - SETTING THE CONDITIONS TO TRIGGER THE ERROR MESSAGE IN <Weather.jsx>
+    A. in the method handleSearch(), set the state of errorMessage to undefined.
+    B. If an error occurs, set the state of errorMessage to event.message
+    C. Make a function in render() that displays the error modal, but only if errorMessage typeof is a 'string'.
+    D. Make sure the error message gets added to the state, so it can be passed as a prop to <ErrorModal>
+
+PART 3 - MAKING SURE THE ERROR MODAL DOESN'T BUG OUT THE VIRTUAL DOM
+::TODO
