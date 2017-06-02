@@ -20,4 +20,14 @@ PART 2 - SETTING THE CONDITIONS TO TRIGGER THE ERROR MESSAGE IN <Weather.jsx>
     D. Make sure the error message gets added to the state, so it can be passed as a prop to <ErrorModal>
 
 PART 3 - MAKING SURE THE ERROR MODAL DOESN'T BUG OUT THE VIRTUAL DOM
-::TODO
+    A. Modifying the return statement:
+        1. Start by returning an empty div.
+        2. Make a componentDidMount() function.
+        3. Inside of componentDidMount(), place any markup you want to return, and put any references to the props above that.
+    B. New require statements
+        1. Require ReactDOM from react-dom
+        2. Require ReactDOMServer from react-dom/server
+    C. Create a secondary DOM with Jquery that you're free to modify, since React doesn't let you add and remove DOM elements so easily.
+        1. make a new $modal variable equal to $(ReactDOMServer).renderToString(MARKUP)
+        2. Use Jquery to select the current node (the modal error) with $(ReactDOM.findDOMNode(this))
+        3. Attach .html($modal VARIABLE) to modify the current DOM Node's HTML to your desired markup
