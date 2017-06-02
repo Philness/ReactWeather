@@ -20,7 +20,7 @@ var Examples = require("Examples");
 //loading foundation here
 require("style!css!foundation-sites/dist/foundation.min.css");
 $(document).foundation();
-require("style!css!applicationStyles")
+require("style!css!sass!applicationStyles")
 
 ReactDOM.render(
     // What are you rendering?  Where are you rendering it?
